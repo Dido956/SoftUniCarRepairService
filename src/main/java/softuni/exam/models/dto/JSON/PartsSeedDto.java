@@ -1,4 +1,4 @@
-package softuni.exam.models.dto.gson;
+package softuni.exam.models.dto.JSON;
 
 import com.google.gson.annotations.Expose;
 import lombok.Getter;

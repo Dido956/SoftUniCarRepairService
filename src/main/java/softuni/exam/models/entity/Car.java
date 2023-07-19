@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "cars")
@@ -14,15 +12,17 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 public class Car extends BaseEntity {
-    @Column
-    private String type;
-    @Column
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CarType type;
+    @Column(nullable = false)
     private String make;
-    @Column
+    @Column(nullable = false)
     private String model;
     @Column
     private Integer year;
-    @Column(name = "plate_number")
+    @Column(name = "plate_number",unique = true)
     private String plateNumber;
     @Column
     private Integer kilometers;

@@ -14,12 +14,18 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class Task extends BaseEntity {
+    @Column(nullable = false)
     private BigDecimal price;
+
+    @Column(nullable = false)
     private LocalDateTime date;
+
     @ManyToOne
     private Mechanic mechanic;
+
     @ManyToOne
     private Part part;
+
     @ManyToOne
     private Car car;
 }

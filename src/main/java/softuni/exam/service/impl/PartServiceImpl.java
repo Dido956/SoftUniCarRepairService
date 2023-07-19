@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import softuni.exam.models.dto.gson.PartsSeedDto;
+import softuni.exam.models.dto.JSON.PartsSeedDto;
 import softuni.exam.models.entity.Part;
 import softuni.exam.repository.PartRepository;
 import softuni.exam.service.PartService;
@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static softuni.exam.util.Constants.PARTS_FILE_PATH;
+import static softuni.exam.util.Constants.*;
 
 @Service
 @AllArgsConstructor
@@ -48,11 +48,11 @@ public class PartServiceImpl implements PartService {
             sb.append(System.lineSeparator());
 
             if(this.partRepository.findFirstByPartName(part.getPartName()).isPresent() || !validationUtil.isValid(part)){
-                sb.append("Invalid part");
+                sb.append(INVALID_PART);
                 continue;
             }
 
-            sb.append(String.format("Successfully added %s - %.2f", part.getPartName(),part.getPrice()));
+            sb.append(String.format(VALID_PART, part.getPartName(),part.getPrice()));
 
             this.partRepository.save(this.modelMapper.map(part, Part.class));
         }
