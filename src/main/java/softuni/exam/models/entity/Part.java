@@ -7,7 +7,6 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "parts")
@@ -15,10 +14,10 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 public class Part extends BaseEntity{
-    @Column(name = "part_name")
+    @Column(name = "part_name",nullable = false ,unique = true)
     private String partName;
-    @Column
-    private BigDecimal price;
-    @Column
+    @Column(nullable = false)
+    private Double price;
+    @Column(nullable = false)
     private Integer quantity;
 }
